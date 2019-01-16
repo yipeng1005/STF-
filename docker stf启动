@@ -1,0 +1,31 @@
+启动rethinkdb
+docker run -d --name rethinkdb -v /srv/rethinkdb:/data --net host rethinkdb rethinkdb --bind all --cache-size 8192 --http-port 8090
+
+启动adb service
+
+docker run -d --name adbd --privileged -v /dev/bus/usb:/dev/bus/usb --net host sorccu/adb:latest
+
+启动STF
+docker run -d --name stf --net host openstf/stf stf local --public-ip 100.168.20.42
+
+
+
+1 docker start 容器名 启动某个容器 
+2 docker stop 容器名 停止某个容器 
+3 docker rm 容器名 删除某个容器 
+4 sudo ufw status 查看ubuntu的防火墙状态 
+docker下查看所有容器状态；
+
+ docker ps -a
+
+sudo netstat -ap | grep  查看端口号
+ kill -9 14345  杀死对于占端口程序
+启动adbd
+docker restart adbd
+启动STF
+docker restart stf
+
+
+
+provider --name yipeng-Lenovo-V110-15IKB --min-port 7400 --max-port 7700 --connect-sub tcp://127.0.0.1:7114 --connect-push tcp://127.0.0.1:7116 --group-timeout 900 --public-ip 100.168.20.31 --storage-url http://localhost:7100/ --adb-host 100.168.20.12 --adb-port 5037 --vnc-initial-size 600x800 --mute-master never --allow-remote"
+
