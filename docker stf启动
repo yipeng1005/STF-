@@ -1,3 +1,4 @@
+---------------------------安装后启动---------------------------------------------------
 启动rethinkdb
 docker run -d --name rethinkdb -v /srv/rethinkdb:/data --net host rethinkdb rethinkdb --bind all --cache-size 8192 --http-port 8090
 
@@ -8,22 +9,25 @@ docker run -d --name adbd --privileged -v /dev/bus/usb:/dev/bus/usb --net host s
 启动STF
 docker run -d --name stf --net host openstf/stf stf local --public-ip 100.168.20.42
 
-
-
-1 docker start 容器名 启动某个容器 
-2 docker stop 容器名 停止某个容器 
-3 docker rm 容器名 删除某个容器 
-4 sudo ufw status 查看ubuntu的防火墙状态 
-docker下查看所有容器状态；
-
- docker ps -a
-
-sudo netstat -ap | grep  查看端口号
- kill -9 14345  杀死对于占端口程序
+--------------------------------------------------------------------------------------------------------
+----------------------------平常启动---------------------------------
 启动adbd
 docker restart adbd
 启动STF
 docker restart stf
+----------------------------------------------------------------------
+---------------------docker部分用到指令--------------------------------
+1 docker start 容器名 启动某个容器 
+2 docker stop 容器名 停止某个容器 
+3 docker rm 容器名 删除某个容器 
+4 sudo ufw status 查看ubuntu的防火墙状态 
+5 docker ps -a 查看docker所有的容器
+6 netstat -tunlp |grep XXXX  查看指定端口
+7 netstat -tunlp  查看所有端口
+8 kill -9 14345  杀死对于占端口程序
+9.docker exec -it STF容器名称 /bin/bash  进入到stf容器中
+10.docker exec -it adbd容器名称 sh 进入到adbd容器中
+11.docker logs  XXX 查看logs
 
 
 
